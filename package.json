@@ -57,8 +57,10 @@
     "karma-webpack": "^4.0.2",
     "mini-css-extract-plugin": "^0.9.0",
     "mkdirp": "^0.5.1",
+    "mocha": "^7.1.0",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "safe-umd-webpack-plugin": "^4.0.0",
+    "selenium-webdriver": "^4.0.0-alpha.5",
     "simulant": "^0.2.2",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
@@ -74,6 +76,7 @@
   "scripts": {
     "test": "karma start --no-single-run",
     "test:ne": "KARMA_SERVER=ne karma start",
+    "test:ex": "mocha ./exampleTests",
     "test:types": "tsc --project test/types",
     "bundle": "webpack && webpack -p && npm run bundle:svg && node tsBannerGenerator.js",
     "bundle:svg": "node makesvg.js",
