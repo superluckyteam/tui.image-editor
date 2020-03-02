@@ -21,3 +21,5 @@ jobs:
     - run: npm run test:ex
       env:
         CI: true
+        BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
+        BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
