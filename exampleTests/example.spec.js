@@ -75,9 +75,10 @@ async function simpleTest(index, url) {
     });
 
     const jj = await driver.takeScreenshot();
-    const decodedImage = Buffer.from(jj, 'base64');
-    const imageprint = await terminalImage.buffer(decodedImage);
-    console.log(imageprint);
+    // const decodedImage = Buffer.from(jj, 'base64');
+    // const imageprint = await terminalImage.buffer(decodedImage);
+    // console.log(imageprint);
+    console.log(`<img src="data:image/gif;base64,${jj}" alt="" />`);
 
     const element = await driver.findElement(By.className('tui-image-editor-header-logo'));
     const img = await element.findElement(By.tagName('img'));
