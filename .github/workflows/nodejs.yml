@@ -20,7 +20,13 @@ jobs:
     - run: npm install
     - run: ROWSERSTACK_ACCESS_KEY=$BROWSERSTACK_ACCESS_KEY
     - run: BROWSERSTACK_USERNAME=$BROWSERSTACK_USERNAME
-    - run: npm run test:ex
+    - run: |
+        npm run test:ex > view.html
+    - name: Upload math result for job 1
+      uses: actions/upload-artifact@v1
+      with:
+        name: view
+        path: view.html
       env:
         CI: true
         BROWSERSTACK_ACCESS_KEY: ${{ secrets.BROWSERSTACK_ACCESS_KEY }}
