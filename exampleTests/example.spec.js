@@ -1,9 +1,10 @@
 const assert = require('assert');
+const terminalImage = require('terminal-image');
 const { Builder, By, Key, until } = require('selenium-webdriver');
 const http = require('http');
 
-const BROWSERSTACK_USERNAME = process.env.BROWSERSTACK_USERNAME;
-const BROWSERSTACK_ACCESS_KEY = process.env.BROWSERSTACK_ACCESS_KEY;
+const BROWSERSTACK_USERNAME = process.env.BROWSERSTACK_USERNAME || 'kimjinwoo4';
+const BROWSERSTACK_ACCESS_KEY = process.env.BROWSERSTACK_ACCESS_KEY || 'yopqSJLdAq3t6wbtwoXW';
 
 let HttpAgent = new http.Agent({
 	keepAlive: true,
@@ -67,7 +68,16 @@ async function simpleTest(index, url) {
     const driver = getDriver(index);
 
     await driver.get(url);
-    await driver.wait(until.titleContains('Design'));
+    await driver.wait(function() {
+      return driver.executeScript('return document.readyState').then(function(readyState) {
+        return readyState === 'complete';
+      });
+    });
+
+    const jj = await driver.takeScreenshot();
+    const decodedImage = Buffer.from(jj, 'base64');
+    const imageprint = await terminalImage.buffer(decodedImage);
+    console.log(imageprint);
 
     const element = await driver.findElement(By.className('tui-image-editor-header-logo'));
     const img = await element.findElement(By.tagName('img'));
