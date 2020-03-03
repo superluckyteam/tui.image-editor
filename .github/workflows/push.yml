@@ -1,8 +1,6 @@
-name: Node.js CI
+name: PUSH ex test
 
-on:
-  schedule:
-    - cron: '0 14,22 * * *'
+on: [push]
 
 jobs:
   build:
