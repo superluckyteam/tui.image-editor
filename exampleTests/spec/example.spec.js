@@ -34,7 +34,7 @@ async function simpleTest(index, url) {
 
 describe('group 1', () => {
     it('filefox- contain text', async function() {
-        this.timeout(30000);
+        this.timeout(50000);
         const url = 'http://nhn.github.io/tui.image-editor/latest/examples/example01-includeUi.html';
         const jj = Object.keys(capabilities).map(index => {
             return simpleTest(index, url);
