@@ -4,8 +4,6 @@ const terminalImage = require('terminal-image');
 const {getDriver, capabilities} = require('../webdriver.js');
 
 
-
-
 async function simpleTest(index, url) {
     const driver = getDriver(index);
     const {browserName, browserVersion} = capabilities[index];
